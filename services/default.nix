@@ -56,6 +56,7 @@ in {
     ./memos.nix
     ./commafeed.nix
     ./readdeck.nix
+    ./plausible.nix
   ];
 
   environment.systemPackages = [cd_script];

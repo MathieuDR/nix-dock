@@ -25,4 +25,8 @@ in {
 
   # commafeed
   "commafeed/token.age".publicKeys = all_recipients;
+
+  #plausible
+  "plausible/passwordfile.age".publicKeys = all_recipients;
+  "plausible/secretkeyfile.age".publicKeys = all_recipients;
 }
