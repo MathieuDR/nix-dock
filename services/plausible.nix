@@ -35,12 +35,10 @@ in {
       reverse_proxy http://localhost:${listen_port}
 
       header {
-        Access-Control-Allow-Origin ${domainUtils.domain "https://garden"}
+        Access-Control-Allow-Origin ${domainUtils.domain "https://*"}
         Access-Control-Allow-Methods "GET, POST, OPTIONS"
-        Access-Control-Allow-Headers "Content-Type, Authorization"
-        Access-Control-Allow-Credentials true
+        Access-Control-Allow-Headers "Content-Type"
 
-        # Efficient handling of preflight OPTIONS requests
         @options {
           method OPTIONS
         }
