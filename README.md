@@ -1,7 +1,5 @@
-# NixOS Configuration
-
-This repository contains the NixOS configuration for a Hetzner server setup. 
-It includes various services and configurations managed through Nix flakes.
+# Nix Dock
+NixOS VPS configuration to *dock* my own, and open-source services.
 
 ## System Overview
 - **NixOS Version**: 22.05
