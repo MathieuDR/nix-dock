@@ -1,0 +1,3 @@
+[config]
+"secrets/PII.json" = ["age1ld3l4gxkquc9wwu34sv407dmukmwfx6lxm87tfwlvl08ak8avs9sa8ynnh"]
+"secrets/.envrc_pii" = ["age1ld3l4gxkquc9wwu34sv407dmukmwfx6lxm87tfwlvl08ak8avs9sa8ynnh"]

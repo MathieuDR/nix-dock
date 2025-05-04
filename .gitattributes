@@ -1,0 +1,2 @@
+secrets/PII.json filter=git-agecrypt diff=git-agecrypt
+secrets/.envrc_pii filter=git-agecrypt diff=git-agecrypt
