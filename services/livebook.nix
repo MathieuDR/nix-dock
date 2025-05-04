@@ -1,4 +1,5 @@
 {
+  self,
   config,
   domainUtils,
   ...
@@ -6,7 +7,7 @@
   data_dir = "/srv/livebook/data";
 in {
   age.secrets = {
-    "livebook/env".file = ../secrets/livebook/env.age;
+    "livebook/env".file = "${self}/secrets/livebook/env.age";
   };
 
   virtualisation.oci-containers.containers.livebook = {

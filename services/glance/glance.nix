@@ -1,4 +1,5 @@
 {
+  self,
   pkgs,
   lib,
   config,
@@ -12,8 +13,8 @@
     "__COMMAFEED_TOKEN__" = config.age.secrets."commafeed/token".path;
   };
 
-  mkReadLaterWidget = (import ./widgets/readdeck.nix {inherit pkgs lib;}).mkReadLaterWidget;
-  mkCommaFeedWidget = (import ./widgets/commafeed.nix {inherit pkgs lib;}).mkCommaFeedWidget;
+  mkReadLaterWidget = (import ./widgets/readdeck.nix {inherit pkgs lib PII;}).mkReadLaterWidget;
+  mkCommaFeedWidget = (import ./widgets/commafeed.nix {inherit pkgs lib PII;}).mkCommaFeedWidget;
 
   assets_store = builtins.path {
     path = ./assets;
@@ -24,12 +25,12 @@
 in {
   age.secrets = {
     "commafeed/token" = {
-      file = ../../secrets/commafeed/token.age;
+      file = "${self}/secrets/commafeed/token.age";
       group = config.users.groups.keys.name;
       mode = "0440";
     };
     "readdeck/token" = {
-      file = ../../secrets/readdeck/token.age;
+      file = "${self}/secrets/readdeck/token.age";
       group = config.users.groups.keys.name;
       mode = "0440";
     };

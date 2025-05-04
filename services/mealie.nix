@@ -1,7 +1,7 @@
 {
+  self,
   config,
   domainUtils,
-  PII,
   ...
 }: let
   home = "/srv/mealie";
@@ -9,7 +9,7 @@
   port = "9099";
 in {
   age.secrets = {
-    "recipes/env".file = ../secrets/recipes/env.age;
+    "recipes/env".file = "${self}/secrets/recipes/env.age";
   };
 
   users.users.mealie = {

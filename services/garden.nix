@@ -1,13 +1,13 @@
 {
+  self,
   config,
   domainUtils,
-  PII,
   ...
 }: let
   listen_port = "9133";
 in {
   age.secrets = {
-    "common/ghp".file = ../secrets/common/ghp.age;
+    "common/ghp".file = "${self}/secrets/common/ghp.age";
   };
 
   virtualisation.oci-containers.containers.garden = {

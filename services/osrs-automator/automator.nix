@@ -1,6 +1,6 @@
 {
+  self,
   config,
-  PII,
   ...
 }: let
   env_folder = "osrs-automator";
@@ -9,8 +9,8 @@
   appsettings = "${env_folder}/appsettings.json";
 in {
   age.secrets = {
-    "common/ghp".file = ../../secrets/common/ghp.age;
-    "osrs-automator/appsettings.override.json".file = ../../secrets/osrs-automator/appsettings.override.json.age;
+    "common/ghp".file = "${self}/secrets/common/ghp.age";
+    "osrs-automator/appsettings.override.json".file = "${self}/secrets/osrs-automator/appsettings.override.json.age";
   };
 
   virtualisation.oci-containers.containers.osrs-automator = {

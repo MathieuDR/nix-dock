@@ -5,7 +5,7 @@
 }: let
   mkReadLaterWidget = {
     title ? "Read later",
-    url ? lib.strings.concatImapStrings ["https://readlater." PII.domain "/api/bookmarks"],
+    url ? lib.strings.concatStrings ["https://readlater." PII.domain "/api/bookmarks"],
     query ? "limit=10&is_archived=false&read_status=unread&read_status=reading",
     cache ? "10m",
     tokenPlaceholder ? "__READDECK_TOKEN__",

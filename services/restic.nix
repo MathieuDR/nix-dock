@@ -1,8 +1,12 @@
-{config, ...}: {
+{
+  self,
+  config,
+  ...
+}: {
   age.secrets = {
-    "restic/env".file = ../../secrets/restic/env.age;
-    "restic/repo".file = ../../secrets/restic/repo.age;
-    "restic/password".file = ../../secrets/restic/password.age;
+    "restic/env".file = "${self}/secrets/restic/env.age";
+    "restic/repo".file = "${self}/secrets/restic/repo.age";
+    "restic/password".file = "${self}/secrets/restic/password.age";
   };
 
   services.restic.backups.b2 = {

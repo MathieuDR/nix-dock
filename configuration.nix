@@ -43,7 +43,6 @@
       "wheel"
     ];
     openssh.authorizedKeys.keys = [
-      (builtins.readFile ./secrets/github_actions_hillchart.pub)
       (builtins.readFile ./secrets/github_actions_garden.pub)
     ];
   };

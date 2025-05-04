@@ -5,7 +5,7 @@
 }: let
   mkCommaFeedWidget = {
     title ? "Tech feeds",
-    url ? lib.strings.concatImapStrings ["https://feed." PII.domain "/rest/category/entries"],
+    url ? lib.strings.concatStrings ["https://feed." PII.domain "/rest/category/entries"],
     categoryId ? "9",
     limit ? 10,
     additionalParams ? ["readType=unread"],
