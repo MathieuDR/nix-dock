@@ -45,6 +45,7 @@ in {
 
   imports = [
     ./glance
+    ./plausible
     ./restic.nix
     ./caddy.nix
     ./livebook.nix
@@ -56,7 +57,6 @@ in {
     ./memos.nix
     ./commafeed.nix
     ./readdeck.nix
-    ./plausible.nix
   ];
 
   environment.systemPackages = [cd_script];

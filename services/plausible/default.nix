@@ -1,33 +1,30 @@
 {
-  self,
   config,
   domainUtils,
-  PII,
   lib,
+  self,
   ...
 }: let
   listen_port = "9342";
   domain = domainUtils.domain "stats";
-  baseurl = lib.concatStrings ["https://" domain];
 in {
   age.secrets = {
-    "plausible/password".file = "${self}/secrets/plausible/passwordfile.age";
-    "plausible/secretkey".file = "${self}/secrets/plausible/secretkeyfile.age";
+    "plausible/env".file = "${self}/secrets/plausible/env.age";
   };
 
-  services.plausible = {
-    enable = true;
-    adminUser = {
-      name = PII.plausible.admin;
-      email = PII.email;
-      passwordFile = config.age.secrets."plausible/password".path;
-      activate = false;
+  virtualisation.oci-containers.containers."stats-plausible" = {
+    # Overwriting generated files
+    environment = lib.mkForce {
+      "TMPDIR" = "/var/lib/plausible/tmp";
     };
-    server = {
-      baseUrl = baseurl;
-      secretKeybaseFile = config.age.secrets."plausible/secretkey".path;
-      port = lib.strings.toInt listen_port;
-    };
+
+    environmentFiles = [
+      config.age.secrets."plausible/env".path
+    ];
+
+    ports = [
+      "${listen_port}:8000"
+    ];
   };
 
   services.caddy.virtualHosts.${domain} = {
@@ -48,4 +45,8 @@ in {
       }
     '';
   };
+
+  imports = [
+    ./compose.nix
+  ];
 }
