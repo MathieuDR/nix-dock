@@ -1,7 +1,9 @@
 {
   self,
   config,
+  lib,
   domainUtils,
+  PII,
   ...
 }: let
   listen_port = "9133";
@@ -26,9 +28,21 @@ in {
     };
   };
 
-  services.caddy.virtualHosts.${domainUtils.domain "garden"} = {
-    extraConfig = ''
-      reverse_proxy http://localhost:${listen_port}
-    '';
+  services.caddy.virtualHosts = {
+    ${domainUtils.domain "mathieu"} = {
+      extraConfig = ''
+        reverse_proxy http://localhost:${listen_port}
+      '';
+    };
+
+    ${lib.concatStringsSep ", " [(domainUtils.domain "www") (domainUtils.domain "garden") PII.domain]} = {
+      logFormat = ''
+        output file ${config.services.caddy.logDir}/access-${domainUtils.domain "mathieu"}.log
+      '';
+
+      extraConfig = ''
+        redir ${domainUtils.domain "https://mathieu"}{uri} permanent
+      '';
+    };
   };
 }
