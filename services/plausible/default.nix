@@ -6,7 +6,7 @@
   ...
 }: let
   listen_port = "9342";
-  domain = domainUtils.domain "stats";
+  domain = domainUtils.domain "insights";
 in {
   age.secrets = {
     "plausible/env".file = "${self}/secrets/plausible/env.age";
@@ -30,19 +30,6 @@ in {
   services.caddy.virtualHosts.${domain} = {
     extraConfig = ''
       reverse_proxy http://localhost:${listen_port}
-
-      header {
-        Access-Control-Allow-Origin ${domainUtils.domain "https://*"}
-        Access-Control-Allow-Methods "GET, POST, OPTIONS"
-        Access-Control-Allow-Headers "Content-Type"
-
-        @options {
-          method OPTIONS
-        }
-        handle @options {
-          respond 204
-        }
-      }
     '';
   };
 
