@@ -32,6 +32,12 @@ in {
     ${domainUtils.domain "mathieu"} = {
       extraConfig = ''
         reverse_proxy http://localhost:${listen_port}
+
+        encode {
+          zstd
+          gzip
+          minimum_length 1024
+        }
       '';
     };
 

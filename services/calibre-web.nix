@@ -25,6 +25,11 @@ in {
   services.caddy.virtualHosts.${domainUtils.domain "books"} = {
     extraConfig = ''
       reverse_proxy http://localhost:8883
+      encode {
+        zstd
+        gzip
+        minimum_length 1024
+      }
     '';
   };
 }
