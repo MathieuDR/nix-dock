@@ -38,6 +38,14 @@ in {
           gzip
           minimum_length 1024
         }
+
+        @font_files {
+          path /static/fonts/*
+        }
+
+        handle @font_files {
+          header Cache-Control "public, max-age=31536000, immutable"
+        }
       '';
     };
 
