@@ -59,5 +59,6 @@ in {
     ./readdeck.nix
   ];
 
+  services.containerUpdate.enable = true;
   environment.systemPackages = [cd_script];
 }
