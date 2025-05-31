@@ -20,10 +20,12 @@ with lib; let
 
       # Get current image info before update
       CURRENT_ID=$(${pkgs.podman}/bin/podman image inspect "$IMAGE" --format "{{.Id}}" 2>/dev/null | head -c 12) || CURRENT_ID="unknown"
-      CURRENT_DIGEST=$(${pkgs.podman}/bin/podman image inspect "$IMAGE" --format "{{index .RepoDigests 0}}" 2>/dev/null) || CURRENT_DIGEST="unknown"
+      CURRENT_FULL_DIGEST=$(${pkgs.podman}/bin/podman image inspect "$IMAGE" --format "{{index .RepoDigests 0}}" 2>/dev/null) || CURRENT_FULL_DIGEST="unknown"
+      # Extract just the SHA256 part for cleaner rollback commands
+      CURRENT_DIGEST=$(echo "$CURRENT_FULL_DIGEST" | sed 's/.*@//' 2>/dev/null) || CURRENT_DIGEST="unknown"
 
       echo "Current image ID: $CURRENT_ID"
-      echo "Current digest: $CURRENT_DIGEST"
+      echo "Current digest: $CURRENT_FULL_DIGEST"
 
       if ! systemctl is-active --quiet "$SERVICE_NAME"; then
         echo "⚠️  Service $SERVICE_NAME is not running"
@@ -43,7 +45,9 @@ with lib; let
 
       # Get new image info after pull
       NEW_ID=$(${pkgs.podman}/bin/podman image inspect "$IMAGE" --format "{{.Id}}" 2>/dev/null | head -c 12) || NEW_ID="unknown"
-      NEW_DIGEST=$(${pkgs.podman}/bin/podman image inspect "$IMAGE" --format "{{index .RepoDigests 0}}" 2>/dev/null) || NEW_DIGEST="unknown"
+      NEW_FULL_DIGEST=$(${pkgs.podman}/bin/podman image inspect "$IMAGE" --format "{{index .RepoDigests 0}}" 2>/dev/null) || NEW_FULL_DIGEST="unknown"
+      # Extract just the SHA256 part for cleaner rollback commands
+      NEW_DIGEST=$(echo "$NEW_FULL_DIGEST" | sed 's/.*@//' 2>/dev/null) || NEW_DIGEST="unknown"
 
       if [ "$CURRENT_ID" = "$NEW_ID" ]; then
         echo "No update available - image is already current"
@@ -52,16 +56,16 @@ with lib; let
       fi
 
       echo "New image ID: $NEW_ID"
-      echo "New digest: $NEW_DIGEST"
+      echo "New digest: $NEW_FULL_DIGEST"
 
       # Log the update attempt before making changes
       ROLLBACK_LOG="/var/log/container-updates/${name}.log"
       mkdir -p "$(dirname "$ROLLBACK_LOG")"
       echo "$(date -Iseconds) UPDATE ${name}" >> "$ROLLBACK_LOG"
       echo "$(date -Iseconds) ID: $CURRENT_ID -> $NEW_ID" >> "$ROLLBACK_LOG"
-      echo "$(date -Iseconds) DIGEST: $CURRENT_DIGEST -> $NEW_DIGEST" >> "$ROLLBACK_LOG"
+      echo "$(date -Iseconds) DIGEST: $CURRENT_FULL_DIGEST -> $NEW_FULL_DIGEST" >> "$ROLLBACK_LOG"
       echo "$(date -Iseconds) PULLED IMAGE $NEW_ID" >> "$ROLLBACK_LOG"
-      echo "$(date -Iseconds) ROLLBACK COMMAND: rollback-${name} $CURRENT_DIGEST" >> "$ROLLBACK_LOG"
+      echo "$(date -Iseconds) ROLLBACK COMMAND: sudo rollback-${name} $CURRENT_DIGEST" >> "$ROLLBACK_LOG"
 
       echo "Restarting service..."
       systemctl restart "$SERVICE_NAME"
@@ -154,8 +158,9 @@ with lib; let
       set -euo pipefail
 
       if [ $# -ne 1 ]; then
-        echo "Usage: rollback-${name} <digest>"
-        echo "Example: rollback-${name} sha256:146dcf7daaee7a07ed3e07d5f8bd6dce2cadfd2993600035df1155cfecff987f"
+        echo "Usage: rollback-${name} <sha256-digest>"
+        echo "Example: rollback-${name} sha256:146dcf7daaee7a07ed3e07d5f8bd6dce2cadfd2993600035df1155cfecffxxxx"
+        echo "   or: rollback-${name} {image}@sha256:146dcf7daaee7a07ed3e07d5f8bd6dce2cadfd2993600035df1155cfecffxxxx"
         exit 1
       fi
 
@@ -169,8 +174,12 @@ with lib; let
       # Log the rollback attempt
       echo "$(date -Iseconds) ROLLBACK ${name} ($TARGET_DIGEST)" >> "$ROLLBACK_LOG"
 
-      # Construct the full image reference with digest
-      FULL_DIGEST="$IMAGE@$TARGET_DIGEST"
+      if [[ "$TARGET_DIGEST" == *"@sha256:"* ]]; then
+        FULL_DIGEST="$TARGET_DIGEST"
+      else
+        FULL_DIGEST="$IMAGE@$TARGET_DIGEST"
+      fi
+
       echo "Pulling: $FULL_DIGEST"
 
       if ! ${pkgs.podman}/bin/podman pull "$FULL_DIGEST"; then
