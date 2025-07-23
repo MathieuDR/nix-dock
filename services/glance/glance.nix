@@ -168,7 +168,7 @@ in {
                         {
                           title = "CommaFeed";
                           icon = "si:rss";
-                          url = domainUtils.domain "https://recipes";
+                          url = domainUtils.domain "https://feed";
                         }
                         {
                           title = "Nix Search";

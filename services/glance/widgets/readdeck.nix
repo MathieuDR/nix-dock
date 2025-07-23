@@ -14,6 +14,7 @@
       "devops" = "#a6e3a1";
       "linux" = "#a6e3a1";
       "programming" = "#74c7ec";
+      "elixir" = "#cba6f7";
       "ai" = "#cba6f7";
       "business" = "#f9e2af";
       "entrepreneurial" = "#f9e2af";
@@ -74,7 +75,7 @@
                         {{ $label := .String "" }}
                         {{ $labelColor := "#6c7086" }}
 
-                        ${labelLookup}
+                         ${labelLookup}
 
                         <span class="text-xs" style="color: {{ $labelColor }};">
                           {{ $label }}
