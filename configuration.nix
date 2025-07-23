@@ -14,8 +14,8 @@
   ];
 
   imports = [
-    ./services
     ./modules
+    ./services
   ];
 
   networking.hostName = "${hostname}";

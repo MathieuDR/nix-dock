@@ -57,6 +57,7 @@ in {
     ./memos.nix
     ./commafeed.nix
     ./readdeck.nix
+    ./satisfactory.nix
   ];
 
   services.containerUpdate.enable = true;
