@@ -31,7 +31,14 @@
       url = "github:mathieudr/nixvim";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
+
+    ## Custom packages
+    we-should-be = {
+      url = "github:mathieudr/We-should-be-landing";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
   };
+
   outputs = inputs @ {
     self,
     nixpkgs,
