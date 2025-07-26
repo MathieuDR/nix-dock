@@ -1,6 +1,6 @@
 {...}: {
   services.satisfactory = {
-    enable = true;
+    enable = false;
     maxPlayers = 4;
   };
 }
