@@ -17,6 +17,11 @@ in {
     };
   };
 
+  systemd.services."podman-calibre-web" = {
+    partOf = ["service-tools.target"];
+    wantedBy = ["service-tools.target"];
+  };
+
   services.restic.backups.b2.paths = [
     "/var/lib/${web_data_dir}"
     library

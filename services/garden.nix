@@ -28,6 +28,11 @@ in {
     };
   };
 
+  systemd.services."podman-garden" = {
+    partOf = ["projects.target"];
+    wantedBy = ["projects.target"];
+  };
+
   services.caddy.virtualHosts = {
     ${domainUtils.domain "mathieu"} = {
       extraConfig = ''

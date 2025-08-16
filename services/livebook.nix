@@ -28,6 +28,11 @@ in {
     ];
   };
 
+  systemd.services."podman-livebook" = {
+    partOf = ["service-tools.target"];
+    wantedBy = ["service-tools.target"];
+  };
+
   systemd.tmpfiles.rules = [
     "d ${data_dir} 0664 root root"
   ];

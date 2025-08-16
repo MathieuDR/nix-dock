@@ -46,6 +46,11 @@ in {
     };
   };
 
+  systemd.services."podman-mealie" = {
+    partOf = ["service-tools.target"];
+    wantedBy = ["service-tools.target"];
+  };
+
   systemd.tmpfiles.rules = [
     "d ${data} 0775 mealie mealie"
   ];

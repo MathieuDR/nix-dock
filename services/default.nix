@@ -48,20 +48,40 @@ in {
     ./plausible
     ./restic.nix
     ./caddy.nix
-    ./livebook.nix
+    # ./livebook.nix
     ./garden.nix
-    ./osrs-automator/automator.nix
+    # ./osrs-automator/automator.nix
     ./actual.nix
     ./mealie.nix
     ./calibre-web.nix
-    ./memos.nix
+    # ./memos.nix
     ./commafeed.nix
     ./readdeck.nix
-    ./satisfactory.nix
     ./weshouldbe.nix
     ./foundryvtt.nix
   ];
 
   services.containerUpdate.enable = true;
   environment.systemPackages = [cd_script];
+
+  # Plausible
+  ## weshould
+  # garden
+  systemd.targets.projects = {
+    description = "Self hosted projects";
+    wantedBy = lib.mkForce [];
+  };
+
+  # books
+  # livebook
+  # memos
+  # mealie
+  systemd.targets.service-tools = {
+    description = "Self hosted services";
+  };
+
+  # foundryvtt
+  systemd.targets.games = {
+    description = "Games";
+  };
 }

@@ -116,8 +116,6 @@
     ];
     log-driver = "journald";
     extraOptions = [
-      "--health-cmd=wget --no-verbose --tries=1 -O - http://127.0.0.1:8123/ping || exit 1"
-      "--health-start-period=2m30s"
       "--network-alias=plausible_events_db"
       "--network=stats_default"
     ];

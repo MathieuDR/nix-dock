@@ -27,6 +27,16 @@ in {
     ];
   };
 
+  systemd.targets."podman-compose-stats-root" = {
+    partOf = ["projects.target"];
+    wantedBy = ["projects.target"];
+  };
+
+  systemd.services."podman-stats-plausible" = {
+    partOf = ["projects.target"];
+    wantedBy = ["projects.target"];
+  };
+
   services.caddy.virtualHosts.${domain} = {
     extraConfig = ''
       reverse_proxy http://localhost:${listen_port}

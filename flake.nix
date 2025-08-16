@@ -76,6 +76,8 @@
               inherit (prev) system;
               inherit config;
             };
+
+            custom = import ./packages {pkgs = prev;};
           })
         ];
       };
@@ -110,6 +112,7 @@
             [
               (configurationDefaults specialArgs)
               home-manager.nixosModules.home-manager
+              inputs.foundryvtt.nixosModules.foundryvtt
               agenix.nixosModules.default
             ]
             ++ modules;

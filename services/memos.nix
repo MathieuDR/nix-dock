@@ -20,6 +20,11 @@ in {
     "d ${logs_dir} 0774 caddy caddy"
   ];
 
+  systemd.services."podman-memos" = {
+    partOf = ["service-tools.target"];
+    wantedBy = ["service-tools.target"];
+  };
+
   #TODO: Can we pass the name (b2) somehow?
   services.restic.backups.b2.paths = [
     data_dir
