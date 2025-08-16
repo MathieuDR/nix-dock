@@ -58,6 +58,7 @@ in {
     ./commafeed.nix
     ./readdeck.nix
     ./satisfactory.nix
+    ./weshouldbe.nix
   ];
 
   services.containerUpdate.enable = true;
