@@ -219,6 +219,27 @@
         "type": "github"
       }
     },
+    "foundryvtt": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs-unstable"
+        ]
+      },
+      "locked": {
+        "lastModified": 1755016536,
+        "narHash": "sha256-XXE6NPMXNPYXqTg8eKjaHvMhT8SYL6jlV/4SU5I/GXI=",
+        "owner": "vitalyavolyn",
+        "repo": "nix-foundryvtt",
+        "rev": "36558e9142d63989830ca711ae5d2afa3f926143",
+        "type": "github"
+      },
+      "original": {
+        "owner": "vitalyavolyn",
+        "ref": "update/13.0.0+347",
+        "repo": "nix-foundryvtt",
+        "type": "github"
+      }
+    },
     "git-hooks": {
       "inputs": {
         "flake-compat": [
@@ -553,6 +574,7 @@
         "agenix": "agenix",
         "disko": "disko",
         "flake-utils": "flake-utils",
+        "foundryvtt": "foundryvtt",
         "home-manager": "home-manager_2",
         "nix-index-database": "nix-index-database",
         "nixpkgs": "nixpkgs",

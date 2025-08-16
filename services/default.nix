@@ -59,6 +59,7 @@ in {
     ./readdeck.nix
     ./satisfactory.nix
     ./weshouldbe.nix
+    ./foundryvtt.nix
   ];
 
   services.containerUpdate.enable = true;
