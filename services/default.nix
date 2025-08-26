@@ -50,7 +50,7 @@ in {
     ./caddy.nix
     # ./livebook.nix
     ./garden.nix
-    # ./osrs-automator/automator.nix
+    ./osrs-automator/automator.nix
     ./actual.nix
     ./mealie.nix
     ./calibre-web.nix

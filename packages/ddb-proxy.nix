@@ -7,7 +7,7 @@ pkgs.mkYarnPackage rec {
     owner = "MrPrimate";
     repo = "ddb-proxy";
     rev = "v${version}";
-    sha256 = "sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=";
+    sha256 = "sha256-RZzdT32jJA3cnVHkZ4Z4M1l0PFwc/4u3/BpaE3u9kh0=";
   };
 
   packageJson = "${src}/package.json";
