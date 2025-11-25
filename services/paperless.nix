@@ -2,7 +2,6 @@
   self,
   config,
   domainUtils,
-  pkgs,
   ...
 }: let
   home = "/srv/paperless";
@@ -11,6 +10,7 @@
   port = "29818";
   tikaPort = "29820";
   gotenbergPort = "29819";
+  subDomain = "docs";
 in {
   age.secrets = {
     "paperless/env".file = "${self}/secrets/paperless/env.age";
@@ -74,10 +74,10 @@ in {
 
     settings = {
       # === SECURITY SETTINGS FOR PUBLIC WEB ===
-      PAPERLESS_URL = "https://${domainUtils.domain "paperless"}";
-      PAPERLESS_ALLOWED_HOSTS = domainUtils.domain "paperless";
-      PAPERLESS_CSRF_TRUSTED_ORIGINS = "https://${domainUtils.domain "paperless"}";
-      PAPERLESS_CORS_ALLOWED_HOSTS = "https://${domainUtils.domain "paperless"}";
+      PAPERLESS_URL = "https://${domainUtils.domain subDomain}";
+      PAPERLESS_ALLOWED_HOSTS = domainUtils.domain subDomain;
+      PAPERLESS_CSRF_TRUSTED_ORIGINS = "https://${domainUtils.domain subDomain}";
+      PAPERLESS_CORS_ALLOWED_HOSTS = "https://${domainUtils.domain subDomain}";
 
       # Reverse proxy configuration
       PAPERLESS_USE_X_FORWARD_HOST = true;
@@ -106,7 +106,7 @@ in {
     };
   };
 
-  services.caddy.virtualHosts.${domainUtils.domain "paperless"} = {
+  services.caddy.virtualHosts.${domainUtils.domain subDomain} = {
     extraConfig = ''
       reverse_proxy http://localhost:${port}
       encode {
