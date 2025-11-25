@@ -32,7 +32,7 @@
   ];
 in {
   imports = [
-    nix-index-database.hmModules.nix-index
+    nix-index-database.homeModules.nix-index
   ];
 
   home.stateVersion = "22.11";
