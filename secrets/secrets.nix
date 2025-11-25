@@ -28,4 +28,7 @@ in {
 
   #plausible
   "plausible/env.age".publicKeys = all_recipients;
+
+  #paperless
+  "paperless/env.age".publicKeys = all_recipients;
 }
