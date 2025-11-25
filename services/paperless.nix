@@ -17,23 +17,6 @@ in {
     "paperless/env".file = "${self}/secrets/paperless/env.age";
   };
 
-  users.users.paperless = {
-    isSystemUser = true;
-    group = "paperless";
-    home = home;
-    uid = 992;
-  };
-
-  users.groups.paperless = {
-    gid = 992;
-  };
-
-  systemd.tmpfiles.rules = [
-    "d ${home} 0775 paperless paperless"
-    "d ${data} 0775 paperless paperless"
-    "d ${media} 0775 paperless paperless"
-  ];
-
   services.restic.backups.b2.paths = [
     media
     "${data}/db.sqlite3"
