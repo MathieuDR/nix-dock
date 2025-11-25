@@ -10,7 +10,7 @@
     bat
     bottom
     curl
-    du-dust
+    dust
     fd
     fx
     git
