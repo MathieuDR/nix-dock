@@ -2,6 +2,7 @@
   self,
   config,
   domainUtils,
+  lib,
   ...
 }: let
   home = "/srv/paperless";
@@ -105,6 +106,11 @@ in {
       # PAPERLESS_CONSUMER_BARCODE_MAX_PAGES = 1;
     };
   };
+
+  systemd.services.paperless-web.wantedBy = lib.mkForce [];
+  systemd.services.paperless-scheduler.wantedBy = lib.mkForce [];
+  systemd.services.paperless-consumer.wantedBy = lib.mkForce [];
+  systemd.services.paperless-task-queue.wantedBy = lib.mkForce [];
 
   services.caddy.virtualHosts.${domainUtils.domain subDomain} = {
     extraConfig = ''

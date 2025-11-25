@@ -48,24 +48,23 @@ in {
     ./plausible
     ./restic.nix
     ./caddy.nix
-    # ./livebook.nix
     ./garden.nix
     ./osrs-automator/automator.nix
     ./actual.nix
     ./mealie.nix
     ./calibre-web.nix
-    # ./memos.nix
     ./commafeed.nix
     ./readdeck.nix
     ./weshouldbe.nix
     ./foundryvtt.nix
+    ./paperless.nix
   ];
 
   services.containerUpdate.enable = true;
   environment.systemPackages = [cd_script];
 
   # Plausible
-  ## weshould
+  # weshould
   # garden
   systemd.targets.projects = {
     description = "Self hosted projects";
