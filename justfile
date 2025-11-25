@@ -35,4 +35,4 @@ connect-root:
 	ssh root@${SERVER_IP}
 
 sync-calibre:
-  rsync -avz --delete --chown=calibre-web:calibre-web --chmod=D2775,F664 "${LOCAL_CALIBRE}" "root@${SERVER_IP}:/var/lib/calibre-library/"
+  rsync -avz --delete --exclude='*/data/' --chown=calibre-web:calibre-web --chmod=D2775,F664 "${LOCAL_CALIBRE}" "root@${SERVER_IP}:/var/lib/calibre-library/"
