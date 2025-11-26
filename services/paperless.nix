@@ -90,11 +90,6 @@ in {
     };
   };
 
-  systemd.services.paperless-web.wantedBy = lib.mkForce [];
-  systemd.services.paperless-scheduler.wantedBy = lib.mkForce [];
-  systemd.services.paperless-consumer.wantedBy = lib.mkForce [];
-  systemd.services.paperless-task-queue.wantedBy = lib.mkForce [];
-
   services.caddy.virtualHosts.${domainUtils.domain subDomain} = {
     extraConfig = ''
       reverse_proxy http://localhost:${port}

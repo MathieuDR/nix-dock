@@ -29,7 +29,7 @@
 
     yvim = {
       url = "github:mathieudr/nixvim";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
+      # inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
     ## Custom packages
