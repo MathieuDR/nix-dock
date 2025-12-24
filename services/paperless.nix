@@ -46,6 +46,33 @@ in {
     ];
   };
 
+  # Paperless slice - limit ALL paperless services combined
+  systemd.slices.system-paperless.sliceConfig = {
+    MemoryMax = "1G"; # All paperless services share 1GB
+    MemoryHigh = "800M";
+  };
+
+  systemd.targets.paperless = {
+    description = "Paperless document management suite";
+    wants = [
+      "paperless-web.service"
+      "paperless-scheduler.service"
+      "paperless-consumer.service"
+      "paperless-task-queue.service"
+    ];
+  };
+
+  # Make paperless services NOT auto-start
+  systemd.services.paperless-scheduler.wantedBy = lib.mkForce [];
+  systemd.services.paperless-web.wantedBy = lib.mkForce [];
+  systemd.services.paperless-consumer.wantedBy = lib.mkForce [];
+  systemd.services.paperless-task-queue.wantedBy = lib.mkForce [];
+
+  # TODO:
+  # Make OCI containers also on-demand
+  # virtualisation.oci-containers.containers.gotenberg.autoStart = false;
+  # virtualisation.oci-containers.containers.tika.autoStart = false;
+
   services.paperless = {
     enable = true;
     environmentFile = config.age.secrets."paperless/env".path;

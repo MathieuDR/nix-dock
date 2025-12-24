@@ -58,6 +58,7 @@ in {
     ./weshouldbe.nix
     ./foundryvtt.nix
     ./paperless.nix
+    # ./immich.nix
   ];
 
   services.containerUpdate.enable = true;

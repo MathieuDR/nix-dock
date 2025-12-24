@@ -22,6 +22,11 @@
   systemd.services."foundryvtt" = {
     partOf = ["games.target"];
     wantedBy = ["games.target"];
+
+    serviceConfig = {
+      MemoryMax = "2.5G";
+      MemoryHigh = "2G";
+    };
   };
 
   services.caddy.virtualHosts.${domainUtils.domain "drakkenheim"} = {
