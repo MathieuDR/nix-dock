@@ -11,11 +11,11 @@ in {
   };
 
   virtualisation.oci-containers.containers.mechavolt = {
-    image = "ghcr.io/MathieuDR/mechavolt:latest";
+    image = "ghcr.io/mathieudr/mechavolt:latest";
     autoStart = true;
 
     ports = [
-      "${listen_port}:80"
+      "${listen_port}:3000"
     ];
 
     # Auth
@@ -29,7 +29,13 @@ in {
   services.caddy.virtualHosts = {
     ${domainUtils.domain "kenny"} = {
       extraConfig = ''
-        reverse_proxy http://localhost:${listen_port}
+        reverse_proxy http://localhost:${listen_port} {
+          @404 status 404
+          handle_response @404 {
+          	rewrite * /404.html
+          	reverse_proxy http://localhost:9134
+          }
+        }
 
         encode {
           zstd

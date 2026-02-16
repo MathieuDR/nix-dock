@@ -57,7 +57,8 @@ in {
     ./readdeck.nix
     ./weshouldbe.nix
     ./foundryvtt.nix
-    ./paperless.nix
+    ./mechavolt.nix
+    # ./paperless.nix
     # ./immich.nix
   ];
 

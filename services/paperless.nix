@@ -74,7 +74,7 @@ in {
   # virtualisation.oci-containers.containers.tika.autoStart = false;
 
   services.paperless = {
-    enable = true;
+    enable = false;
     environmentFile = config.age.secrets."paperless/env".path;
     consumptionDirIsPublic = true;
     port = builtins.fromJSON port;
