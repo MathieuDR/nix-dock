@@ -17,7 +17,7 @@ in {
     autoStart = true;
 
     ports = [
-      "${listen_port}:8080"
+      "${listen_port}:80"
     ];
 
     # Auth
@@ -36,7 +36,13 @@ in {
   services.caddy.virtualHosts = {
     ${domainUtils.domain "mathieu"} = {
       extraConfig = ''
-        reverse_proxy http://localhost:${listen_port}
+        reverse_proxy http://localhost:${listen_port} {
+          @404 status 404
+          handle_response @404 {
+          	rewrite * /404
+          	reverse_proxy http://localhost:${listen_port}
+          }
+        }
 
         encode {
           zstd

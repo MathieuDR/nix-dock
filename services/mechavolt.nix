@@ -33,7 +33,7 @@ in {
           @404 status 404
           handle_response @404 {
           	rewrite * /404.html
-          	reverse_proxy http://localhost:9134
+          	reverse_proxy http://localhost:${listen_port}
           }
         }
 
