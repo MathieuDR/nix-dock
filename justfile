@@ -28,6 +28,9 @@ rebuild-trace:
 rebuild-trace-no-cache:
 	nixos-rebuild switch --flake .#nixos --target-host root@${SERVER_IP} --option eval-cache false --show-trace
 
+sftp:
+	sftp ${SERVER_USERNAME}@${SERVER_IP}
+
 connect:
 	ssh ${SERVER_USERNAME}@${SERVER_IP}
 

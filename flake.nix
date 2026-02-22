@@ -42,7 +42,7 @@
     #https://github.com/vitalyavolyn/nix-foundryvtt/tree/update/13.0.0%2B347
     #foundryvtt.url = "github:reckenrode/nix-foundryvtt";
     foundryvtt = {
-      url = "github:vitalyavolyn/nix-foundryvtt/update/13.0.0+347";
+      url = "github:reckenrode/nix-foundryvtt";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
   };

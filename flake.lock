@@ -208,16 +208,15 @@
         ]
       },
       "locked": {
-        "lastModified": 1755016536,
-        "narHash": "sha256-XXE6NPMXNPYXqTg8eKjaHvMhT8SYL6jlV/4SU5I/GXI=",
-        "owner": "vitalyavolyn",
+        "lastModified": 1771422625,
+        "narHash": "sha256-4SW2z/0xbNNGszMjUyeYC+5rC9SfU6TZTysHTsWW7j4=",
+        "owner": "reckenrode",
         "repo": "nix-foundryvtt",
-        "rev": "36558e9142d63989830ca711ae5d2afa3f926143",
+        "rev": "2f33b9bdd16230b7542adfad85bc168af1199639",
         "type": "github"
       },
       "original": {
-        "owner": "vitalyavolyn",
-        "ref": "update/13.0.0+347",
+        "owner": "reckenrode",
         "repo": "nix-foundryvtt",
         "type": "github"
       }
