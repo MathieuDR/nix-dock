@@ -4,6 +4,7 @@
   hostname,
   pkgs,
   inputs,
+  config,
   ...
 }: {
   time.timeZone = "Europe/Berlin";
@@ -19,11 +20,8 @@
   ];
 
   networking.hostName = "${hostname}";
-
   environment.enableAllTerminfo = true;
-
   security.sudo.wheelNeedsPassword = false;
-
   users.users.${username} = {
     isNormalUser = true;
     extraGroups = [
@@ -60,6 +58,16 @@
   virtualisation.podman = {
     enable = true;
     autoPrune.enable = true;
+  };
+
+  systemd.services.bootstrap-flake = {
+    description = "Bootstrap nixos flake from Github";
+    wantedBy = ["multi-user.target"];
+    unitConfig.ConditionPathExists = "!/etc/nixdock/.git";
+    serviceConfig = {
+      Type = "oneshot";
+      ExecStart = "${pkgs.git}/bin/git clone https://github.com/MathieuDR/nix-dock.git /etc/nixdock";
+    };
   };
 
   nix = {

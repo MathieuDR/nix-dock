@@ -58,8 +58,7 @@ in {
     ./weshouldbe.nix
     ./foundryvtt.nix
     ./mechavolt.nix
-    # ./paperless.nix
-    # ./immich.nix
+    ./runner.nix
   ];
 
   services.containerUpdate.enable = true;

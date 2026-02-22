@@ -31,4 +31,7 @@ in {
 
   #paperless
   "paperless/env.age".publicKeys = all_recipients;
+
+  #codeberg
+  "codeberg/runner.age".publicKeys = all_recipients;
 }

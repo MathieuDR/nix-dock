@@ -1,9 +1,11 @@
 [config]
-"secrets/PII.json" = [
-    "age1ld3l4gxkquc9wwu34sv407dmukmwfx6lxm87tfwlvl08ak8avs9sa8ynnh",
-    "age1uw8gd305r6tutr5fm883405d8k06rsmsmh6h6waxtnx46pjylynq82caus",
-]
 "secrets/.envrc_pii" = [
     "age1ld3l4gxkquc9wwu34sv407dmukmwfx6lxm87tfwlvl08ak8avs9sa8ynnh",
     "age1uw8gd305r6tutr5fm883405d8k06rsmsmh6h6waxtnx46pjylynq82caus",
+    "age14c57zt6s0rp6tw8l72zqjwhjwly7k6erjkefr6xxphwegh3pkqnqjeuh2h",
+]
+"secrets/PII.json" = [
+    "age1ld3l4gxkquc9wwu34sv407dmukmwfx6lxm87tfwlvl08ak8avs9sa8ynnh",
+    "age1uw8gd305r6tutr5fm883405d8k06rsmsmh6h6waxtnx46pjylynq82caus",
+    "age14c57zt6s0rp6tw8l72zqjwhjwly7k6erjkefr6xxphwegh3pkqnqjeuh2h",
 ]
