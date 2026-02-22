@@ -63,6 +63,9 @@
 
   nix = {
     settings = {
+      cores = 1;
+      max-jobs = 1;
+
       trusted-users = [username];
 
       accept-flake-config = true;
