@@ -1,10 +1,10 @@
 {domainUtils, ...}: let
-  listen_port = "9134";
+  listen_port = "9334";
   domain = domainUtils.domain "insights";
   data_dir = "/var/lib/goatcounter";
 in {
   systemd.tmpfiles.rules = [
-    "d ${data_dir} 0774 root root"
+    "d ${data_dir} 0774 1000 1000"
   ];
 
   virtualisation.oci-containers.containers.goatcounter = {
