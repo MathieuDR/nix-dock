@@ -45,7 +45,6 @@ in {
 
   imports = [
     ./glance
-    # ./plausible
     ./goatcounter.nix
     ./restic.nix
     ./caddy.nix
