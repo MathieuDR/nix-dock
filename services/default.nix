@@ -59,6 +59,7 @@ in {
     ./foundryvtt.nix
     ./mechavolt.nix
     ./runner.nix
+    ./shlink.nix
   ];
 
   services.containerUpdate.enable = true;
