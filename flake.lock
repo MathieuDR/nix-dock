@@ -208,15 +208,15 @@
         ]
       },
       "locked": {
-        "lastModified": 1771422625,
-        "narHash": "sha256-4SW2z/0xbNNGszMjUyeYC+5rC9SfU6TZTysHTsWW7j4=",
-        "owner": "reckenrode",
+        "lastModified": 1776806823,
+        "narHash": "sha256-f1yhAxws9eCej7LiFIcHJRGqS6461YY86S1E2C1LzYA=",
+        "owner": "cdata",
         "repo": "nix-foundryvtt",
-        "rev": "2f33b9bdd16230b7542adfad85bc168af1199639",
+        "rev": "9b525c746425b39db83b2e0a5038803e35710eb9",
         "type": "github"
       },
       "original": {
-        "owner": "reckenrode",
+        "owner": "cdata",
         "repo": "nix-foundryvtt",
         "type": "github"
       }
@@ -387,11 +387,11 @@
     },
     "nixpkgs-unstable": {
       "locked": {
-        "lastModified": 1763966396,
-        "narHash": "sha256-6eeL1YPcY1MV3DDStIDIdy/zZCDKgHdkCmsrLJFiZf0=",
+        "lastModified": 1777578337,
+        "narHash": "sha256-Ad49moKWeXtKBJNy2ebiTQUEgdLyvGmTeykAQ9xM+Z4=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "5ae3b07d8d6527c42f17c876e404993199144b6a",
+        "rev": "15f4ee454b1dce334612fa6843b3e05cf546efab",
         "type": "github"
       },
       "original": {
@@ -418,6 +418,22 @@
       }
     },
     "nixpkgs_3": {
+      "locked": {
+        "lastModified": 1753250450,
+        "narHash": "sha256-i+CQV2rPmP8wHxj0aq4siYyohHwVlsh40kV89f3nw1s=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "fc02ee70efb805d3b2865908a13ddd4474557ecf",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_4": {
       "locked": {
         "lastModified": 1762844143,
         "narHash": "sha256-SlybxLZ1/e4T2lb1czEtWVzDCVSTvk9WLwGhmxFmBxI=",
@@ -609,9 +625,7 @@
       "inputs": {
         "flake-utils": "flake-utils_2",
         "gitignore": "gitignore",
-        "nixpkgs": [
-          "nixpkgs-unstable"
-        ]
+        "nixpkgs": "nixpkgs_3"
       },
       "locked": {
         "lastModified": 1753573919,
@@ -631,7 +645,7 @@
       "inputs": {
         "flake-parts": "flake-parts_2",
         "lexical": "lexical",
-        "nixpkgs": "nixpkgs_3",
+        "nixpkgs": "nixpkgs_4",
         "nixvim": "nixvim"
       },
       "locked": {

@@ -3,7 +3,7 @@
   library = "/var/lib/calibre-library";
 in {
   services.calibre-web = {
-    enable = true;
+    enable = false;
 
     dataDir = web_data_dir;
     listen = {

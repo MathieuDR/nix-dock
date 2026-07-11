@@ -53,13 +53,13 @@ in {
     ./actual.nix
     ./ghostfolio.nix
     ./mealie.nix
-    ./calibre-web.nix
+    # ./calibre-web.nix
     ./commafeed.nix
     ./readdeck.nix
-    ./weshouldbe.nix
+    # ./weshouldbe.nix
     ./foundryvtt.nix
-    ./mechavolt.nix
-    ./runner.nix
+    # ./mechavolt.nix
+    # ./runner.nix
     ./shlink.nix
   ];
 

@@ -12,7 +12,7 @@ in {
 
   virtualisation.oci-containers.containers.mechavolt = {
     image = "ghcr.io/mathieudr/mechavolt:latest";
-    autoStart = true;
+    autoStart = false;
 
     ports = [
       "${listen_port}:3000"

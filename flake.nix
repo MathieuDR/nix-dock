@@ -35,14 +35,14 @@
     ## Custom packages
     we-should-be = {
       url = "github:mathieudr/We-should-be-landing";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
     # Foundry
     #https://github.com/vitalyavolyn/nix-foundryvtt/tree/update/13.0.0%2B347
     #foundryvtt.url = "github:reckenrode/nix-foundryvtt";
     foundryvtt = {
-      url = "github:reckenrode/nix-foundryvtt";
+      url = "github:cdata/nix-foundryvtt";
+      # url = "github:reckenrode/nix-foundryvtt";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
   };
@@ -143,7 +143,6 @@
         devShells.default = pkgs.mkShell {
           packages = with pkgs; [
             backblaze-b2
-            just
             agenix.packages.${system}.default
             git-agecrypt
             age
