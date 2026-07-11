@@ -61,6 +61,7 @@ in {
     # ./mechavolt.nix
     # ./runner.nix
     ./shlink.nix
+    ./schedules.nix
   ];
 
   services.containerUpdate.enable = true;

@@ -11,6 +11,13 @@
   network = "ghostfolio-net";
   envFile = config.age.secrets."ghostfolio/env".path;
 in {
+  # Pause the whole trio during D&D sessions to free RAM for Foundry.
+  dock.schedules.pauseDuringDnd = [
+    "podman-ghostfolio.service"
+    "podman-ghostfolio-db.service"
+    "podman-ghostfolio-redis.service"
+  ];
+
   age.secrets = {
     "ghostfolio/env".file = "${self}/secrets/ghostfolio/env.age";
   };

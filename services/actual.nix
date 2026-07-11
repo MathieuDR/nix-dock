@@ -1,6 +1,8 @@
 {domainUtils, ...}: let
   data_dir = "/srv/actual/data";
 in {
+  dock.schedules.pauseDuringDnd = ["podman-actual.service"];
+
   virtualisation.oci-containers.containers.actual = {
     image = "actualbudget/actual-server:latest";
     autoStart = true;
