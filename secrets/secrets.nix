@@ -10,6 +10,7 @@ in {
   "common/ghp.age".publicKeys = all_recipients;
   "osrs-automator/appsettings.override.json.age".publicKeys = all_recipients;
   "recipes/env.age".publicKeys = all_recipients;
+  "ghostfolio/env.age".publicKeys = all_recipients;
   "readdeck/token.age".publicKeys = all_recipients;
   "commafeed/token.age".publicKeys = all_recipients;
   "plausible/env.age".publicKeys = all_recipients;
