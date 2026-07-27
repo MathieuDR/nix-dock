@@ -51,7 +51,7 @@ in {
     ./garden.nix
     ./osrs-automator/automator.nix
     ./actual.nix
-    ./ghostfolio.nix
+    # ./ghostfolio.nix
     ./mealie.nix
     # ./calibre-web.nix
     ./commafeed.nix

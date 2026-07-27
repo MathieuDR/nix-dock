@@ -65,7 +65,7 @@ in {
       ports = ["127.0.0.1:${port}:${port}"];
       extraOptions = [
         "--network=${network}"
-        "--memory=512m"
+        "--memory=1g"
       ];
     };
   };
