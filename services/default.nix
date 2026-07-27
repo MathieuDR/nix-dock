@@ -62,6 +62,7 @@ in {
     # ./runner.nix
     ./shlink.nix
     ./schedules.nix
+    ./wireguard.nix
   ];
 
   services.containerUpdate.enable = true;
