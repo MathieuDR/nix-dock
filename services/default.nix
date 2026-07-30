@@ -47,6 +47,7 @@ in {
     ./glance
     ./goatcounter.nix
     ./restic.nix
+    ./beszel.nix
     ./caddy.nix
     ./garden.nix
     ./osrs-automator/automator.nix
