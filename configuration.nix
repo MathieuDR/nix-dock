@@ -54,7 +54,18 @@
   };
 
   system.stateVersion = "22.05";
-  environment.systemPackages = [pkgs.rsync];
+
+  environment.systemPackages = with pkgs; [
+    rsync
+    (inputs.yvim.packages.x86_64-linux.default)
+    vim
+    htop
+    fd
+    bat
+    fzf
+    bottom
+    lsd
+  ];
 
   virtualisation.podman = {
     enable = true;
