@@ -203,7 +203,7 @@ in {
                         }
                         {
                           title = "Insights";
-                          icon = "auto-invert sh:goatcounter-light";
+                          icon = "auto-invert sh:goatcounter-dark";
                           url = domainUtils.domain "https://insights";
                         }
                       ];
@@ -238,12 +238,12 @@ in {
                       links = [
                         {
                           title = "Status";
-                          icon = "auto-invert sh:gatus-light";
+                          icon = "auto-invert sh:gatus-dark";
                           url = domainUtils.domain "https://status.home";
                         }
                         {
                           title = "Metrics";
-                          icon = "auto-invert sh:beszel-light";
+                          icon = "auto-invert sh:beszel-dark";
                           url = domainUtils.domain "https://metrics.home";
                         }
                       ];
