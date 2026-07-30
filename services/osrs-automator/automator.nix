@@ -9,7 +9,7 @@
   appsettings = "${env_folder}/appsettings.json";
 in {
   # Nightly graceful restart to work around a memory leak.
-  dock.schedules.nightlyRestart = ["podman-osrs-automator.service"];
+  # dock.schedules.nightlyRestart = ["podman-osrs-automator.service"];
 
   age.secrets = {
     "common/ghp".file = "${self}/secrets/common/ghp.age";

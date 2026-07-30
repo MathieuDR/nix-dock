@@ -50,9 +50,9 @@ in {
     ./caddy.nix
     ./garden.nix
     ./osrs-automator/automator.nix
-    ./actual.nix
+    # ./actual.nix
     # ./ghostfolio.nix
-    ./mealie.nix
+    # ./mealie.nix
     # ./calibre-web.nix
     ./commafeed.nix
     ./readdeck.nix
@@ -61,7 +61,7 @@ in {
     # ./mechavolt.nix
     # ./runner.nix
     ./shlink.nix
-    ./schedules.nix
+    # ./schedules.nix
     ./wireguard.nix
   ];
 
