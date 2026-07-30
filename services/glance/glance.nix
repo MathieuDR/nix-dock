@@ -139,6 +139,7 @@ in {
                   type = "bookmarks";
                   groups = [
                     {
+                      title = "Comms";
                       links = [
                         {
                           title = "Whatsapp";
@@ -146,19 +147,24 @@ in {
                           url = "https://web.whatsapp.com";
                         }
                         {
-                          title = "Github";
-                          icon = "si:github";
-                          url = "https://www.github.com/";
+                          title = "Gmail";
+                          icon = "si:gmail";
+                          url = "https://mail.google.com/";
                         }
                         {
                           title = "Tuta";
                           icon = "si:tuta";
                           url = "https://app.tuta.com/";
                         }
+                      ];
+                    }
+                    {
+                      title = "Dev";
+                      links = [
                         {
-                          title = "Gmail";
-                          icon = "si:gmail";
-                          url = "https://mail.google.com/";
+                          title = "Github";
+                          icon = "si:github";
+                          url = "https://www.github.com/";
                         }
                         {
                           title = "Linear";
@@ -166,30 +172,45 @@ in {
                           url = PII.glance.linear;
                         }
                         {
-                          title = "Ground News";
-                          icon = "mdi:earth";
-                          url = "https://www.ground.news";
+                          title = "Nix Search";
+                          icon = "si:nixos";
+                          url = "https://search.nixos.org/packages";
                         }
+                      ];
+                    }
+                    {
+                      title = "Read";
+                      links = [
                         {
                           title = "CommaFeed";
                           icon = "si:rss";
                           url = domainUtils.domain "https://feed";
                         }
                         {
-                          title = "Status";
-                          icon = "sh:gatus-dark";
-                          url = domainUtils.domain "https://status.home";
+                          title = "Ground News";
+                          icon = "mdi:earth";
+                          url = "https://www.ground.news";
+                        }
+                      ];
+                    }
+                    {
+                      title = "Garden";
+                      links = [
+                        {
+                          title = "~/.garden";
+                          icon = "si:leaflet";
+                          url = domainUtils.domain "https://mathieu";
                         }
                         {
-                          title = "Metrics";
-                          icon = "sh:beszel-dark";
-                          url = domainUtils.domain "https://metrics.home";
+                          title = "Insights";
+                          icon = "auto-invert sh:goatcounter-light";
+                          url = domainUtils.domain "https://insights";
                         }
-                        {
-                          title = "Nix Search";
-                          icon = "si:nixos";
-                          url = "https://search.nixos.org/packages";
-                        }
+                      ];
+                    }
+                    {
+                      title = "Apps";
+                      links = [
                         {
                           title = "Immich";
                           icon = "si:immich";
@@ -206,19 +227,24 @@ in {
                           url = domainUtils.domain "https://actual.home";
                         }
                         {
-                          title = "~/.garden";
-                          icon = "si:leaflet";
-                          url = domainUtils.domain "https://mathieu";
-                        }
-                        {
-                          title = "Insights";
-                          icon = "sh:goatcounter-dark";
-                          url = domainUtils.domain "https://insights";
-                        }
-                        {
                           title = "Recipes";
                           icon = "si:mealie";
                           url = domainUtils.domain "https://recipes.home";
+                        }
+                      ];
+                    }
+                    {
+                      title = "Infra";
+                      links = [
+                        {
+                          title = "Status";
+                          icon = "auto-invert sh:gatus-light";
+                          url = domainUtils.domain "https://status.home";
+                        }
+                        {
+                          title = "Metrics";
+                          icon = "auto-invert sh:beszel-light";
+                          url = domainUtils.domain "https://metrics.home";
                         }
                       ];
                     }
@@ -228,198 +254,6 @@ in {
             }
           ];
         }
-
-        # {
-        #   name = "Markets";
-        #   width = "wide";
-        #   columns = [
-        #     {
-        #       size = "small";
-        #       widgets = [
-        #         {
-        #           type = "markets";
-        #           title = "Indices";
-        #           markets = [
-        #             {
-        #               symbol = "^GDAXI";
-        #               name = "DAX";
-        #             }
-        #             {
-        #               symbol = "^STOXX50E";
-        #               name = "EURO STOXX 50";
-        #             }
-        #             {
-        #               symbol = "EURUSD=X";
-        #               name = "EUR/USD";
-        #             }
-        #           ];
-        #         }
-        #         {
-        #           type = "markets";
-        #           title = "Crypto";
-        #           markets = [
-        #             {
-        #               symbol = "ETH-EUR";
-        #               name = "Ethereum";
-        #             }
-        #             {
-        #               symbol = "ADA-EUR";
-        #               name = "Cardano";
-        #             }
-        #             {
-        #               symbol = "SOL-EUR";
-        #               name = "Solana";
-        #             }
-        #             {
-        #               symbol = "XRP-EUR";
-        #               name = "XRP";
-        #             }
-        #             {
-        #               symbol = "LINK-EUR";
-        #               name = "Chainlink";
-        #             }
-        #             {
-        #               symbol = "DOT-EUR";
-        #               name = "Polkadot";
-        #             }
-        #             {
-        #               symbol = "MATIC-EUR";
-        #               name = "Polygon";
-        #             }
-        #           ];
-        #         }
-        #       ];
-        #     }
-        #     {
-        #       size = "full";
-        #       widgets = [
-        #         {
-        #           type = "split-column";
-        #           max-columns = 3;
-        #           widgets = [
-        #             {
-        #               type = "rss";
-        #               title = "European News";
-        #               collapse-after = 11;
-        #               feeds = [
-        #                 {
-        #                   url = "https://www.ft.com/news-feed?format=rss";
-        #                   title = "Financial times";
-        #                 }
-        #                 {
-        #                   url = "https://rss.nixnet.services/?action=display&bridge=DeutscheWelleBridge&feed=http%3A%2F%2Frss.dw.com%2Fatom%2Frss-en-bus&format=Atom";
-        #                   title = "Deutsche Welle - Business";
-        #                 }
-        #                 {
-        #                   url = "https://feeds.thelocal.com/rss/";
-        #                   title = "The local";
-        #                 }
-        #               ];
-        #             }
-        #
-        #             {
-        #               type = "rss";
-        #               title = "Global News";
-        #               collapse-after = 11;
-        #
-        #               feeds = [
-        #                 {
-        #                   url = "https://feeds.bloomberg.com/markets/news.rss";
-        #                   title = "Bloomberg";
-        #                 }
-        #                 {
-        #                   url = "https://feeds.content.dowjones.io/public/rss/RSSMarketsMain";
-        #                   title = "Wall Street Journal";
-        #                 }
-        #               ];
-        #             }
-        #
-        #             {
-        #               type = "rss";
-        #               title = "Market Insights";
-        #               collapse-after = 11;
-        #               feeds = [
-        #                 {
-        #                   url = "https://www.ecb.europa.eu/rss/press.html";
-        #                   title = "ECB Press Releases";
-        #                 }
-        #                 {
-        #                   url = "https://www.esma.europa.eu/rss.xml";
-        #                   title = "European Securities and Markets Authority";
-        #                 }
-        #               ];
-        #             }
-        #           ];
-        #         }
-        #       ];
-        #     }
-        #     {
-        #       size = "small";
-        #       widgets = [
-        #         # {
-        #         #   type = "markets";
-        #         #   title = "Insurances";
-        #         #   markets = [
-        #         #   ];
-        #         # }
-        #         {
-        #           type = "markets";
-        #           title = "funds";
-        #           markets = [
-        #             {
-        #               symbol = "0P0001M55Y.F";
-        #               name = "China New Economy Basis Dis";
-        #             }
-        #             {
-        #               symbol = "0P00019M2F.F";
-        #               name = "ABN AMRO";
-        #             }
-        #             {
-        #               symbol = "UQ2B.F";
-        #               name = "Allianz Global Investors Fund AGIF SIC";
-        #             }
-        #             {
-        #               symbol = "0P00019ILC.F";
-        #               name = "Eurozone S&M";
-        #             }
-        #             {
-        #               symbol = "SKIGLO.CO";
-        #               name = "SKAGEN Global A (dkk)";
-        #             }
-        #             {
-        #               symbol = "UQ2A.F";
-        #               name = "Allianz Global Inverstors Fund Europe Equity Growth A DIS";
-        #             }
-        #             {
-        #               symbol = "0P0001KN55.F";
-        #               name = "NORDEA1 S.European";
-        #             }
-        #             {
-        #               symbol = "0P00000N2T.F";
-        #               name = "Multifund Balanced";
-        #             }
-        #             {
-        #               symbol = "0P0001K5UT";
-        #               name = "SCHRODER INTERNAT. Select Fund";
-        #             }
-        #             {
-        #               symbol = "0P00012NDA.F";
-        #               name = "FLO V Storch-Multi OPP";
-        #             }
-        #             {
-        #               symbol = "0P0001LOCS.F";
-        #               name = "Premium Crescendo R DIS";
-        #             }
-        #             {
-        #               symbol = "0P00000NCK.F";
-        #               name = "BNP Paribas B Pension Sust Bal Classic";
-        #             }
-        #           ];
-        #         }
-        #       ];
-        #     }
-        #   ];
-        # }
       ];
     };
   };
