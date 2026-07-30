@@ -26,6 +26,8 @@
     extraOptions = ["--network=host"];
     environment = {
       HUB_URL = "http://10.100.0.2:8090";
+      DOCKER_HOST = "unix:///run/podman/podman.sock";
+      SERVICE_PATTERNS = "podman-*,caddy*,beszel*,foundryvtt*,glance*,wireguard*";
     };
     environmentFiles = ["/var/lib/beszel-agent.env"]; # KEY= , TOKEN=
     volumes = [
