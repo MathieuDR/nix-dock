@@ -64,6 +64,7 @@ in {
     ./shlink.nix
     # ./schedules.nix
     ./wireguard.nix
+    ./firesprout-proxy.nix
   ];
 
   services.containerUpdate.enable = true;
