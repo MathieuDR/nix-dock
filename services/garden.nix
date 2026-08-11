@@ -36,27 +36,13 @@ in {
   services.caddy.virtualHosts = {
     ${domainUtils.domain "mathieu"} = {
       extraConfig = ''
-        reverse_proxy http://localhost:${listen_port} {
-          @404 status 404
-          handle_response @404 {
-          	rewrite * /404
-          	reverse_proxy http://localhost:${listen_port}
-          }
-        }
-
         encode {
           zstd
           gzip
           minimum_length 1024
         }
 
-        @font_files {
-          path /static/fonts/*
-        }
-
-        handle @font_files {
-          header Cache-Control "public, max-age=31536000, immutable"
-        }
+        reverse_proxy http://localhost:${listen_port}
       '';
     };
 
